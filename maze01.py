@@ -21,10 +21,6 @@ MAZE = [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
 # set accelerometer sensitivity
 SENSITIVITY = 100
 
-# initial positions
-old_x_pos = x_pos = 1
-old_y_pos = y_pos = 1
-
 
 def display_maze(x_pos,y_pos):    
     x_home = x_pos-2
