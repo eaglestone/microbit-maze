@@ -26,7 +26,6 @@ MAZE = [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
 # set accelerometer sensitivity
 SENSITIVITY = 100
 
-x_pos = y_pos = 1
 
 def display_maze(x_pos,y_pos):    
     x_home = x_pos-2
@@ -58,12 +57,18 @@ def display_player(x_pos, y_pos):
 
 def player_can_move(x_pos, y_pos):
     return MAZE[(WIDTH*(y_pos) + (x_pos))] == 0
+
+# set the initial start position
+x_pos = y_pos = 1
         
-# Display the maze and start the input loop
+# Start the main loop for the game
 while(True):
+  
+    # get the horizontal and verticle position of the microbit
     horiz = accelerometer.get_x()
     vert = accelerometer.get_y()
     
+    # move the postion of the ball
     if horiz > 0 and abs(horiz) > SENSITIVITY:
         if x_pos < WIDTH-2 and player_can_move(x_pos+1,y_pos): x_pos += 1
     
@@ -79,7 +84,8 @@ while(True):
     if x_pos == 7 and y_pos == 7:
       display.scroll('WELL DONE :) Press reset to start again', 120)
       break
-        
+
+    # display the maze and the ball
     display_maze(x_pos,y_pos)
     display_player(x_pos, y_pos)
     sleep(80)
